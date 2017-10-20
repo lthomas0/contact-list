@@ -8,20 +8,19 @@
   ContactEditController.$inject = [
     "$stateParams",
     "$state",
-    "fileUploadService",
     "contactService"
   ];
 
   function ContactEditController(
     $stateParams,
     $state,
-    fileUploadService,
     contactService
   ) {
     "use strict";
     var $ctrl = this;
     $ctrl.show = true;
     $ctrl.formData = {};
+    $ctrl.submit = _submit;
 
     $ctrl.$onInit = () => {
       if ($stateParams.id) {
@@ -52,7 +51,7 @@
       $ctrl.formData = response.item;
     }
 
-    $ctrl.submit = () => {
+    function _submit(){
       if ($stateParams.id) {
         contactService
           .update($ctrl.formData)
@@ -72,12 +71,6 @@
 
     function _onError(error) {
       console.log(error);
-    }
-
-    $ctrl.upload = files => {
-      fileUploadService.upload(files[0])
-        .then(_onUploadSuccess)
-        .catch(_onError);
     }
 
     function _onUploadSuccess(res) {

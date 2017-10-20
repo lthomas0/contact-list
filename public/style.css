@@ -1,0 +1,38 @@
+
+body {
+    font-family: 'Source Code Pro', monospace;
+}
+h2 {
+    text-align: right;
+   margin-top: 50px;
+   font-family: 'Press Start 2P', cursive;
+   color: #A0D5D9;
+   -webkit-text-stroke: 1px #e18bd0;
+   
+}
+h1 {
+    
+    margin-top: 50px;
+    font-family: 'Press Start 2P', cursive;
+    color: #A0D5D9;
+    -webkit-text-stroke: 1px #e18bd0;
+}
+.jumbotron text-center{
+
+}
+#addNew {
+    color: #A0D5D9;
+    font-family: 'Press Start 2P', cursive;
+}
+.myAlert {
+   margin: 50px 0 0;
+}
+.alert h4 {
+   margin: 0;
+}
+span {
+   color: red;
+}
+.footer {
+   padding-top: 235px;
+}

@@ -8,11 +8,11 @@
 
     function ContactController($state, contactService) {
         'use strict'
-        debugger
         var $ctrl = this;
-        $ctrl.contacts = contacts;
+        // $ctrl.contacts = contacts;
         $ctrl.service = contactService;
         $ctrl.tab = 1;
+        $ctrl.contacts = [];
         $ctrl.selectedItem = null;
         $ctrl.updateArray = function (value) {
             var index = $ctrl.contacts.map(function (el) {
@@ -20,28 +20,55 @@
             }).indexOf(value._id);
             $ctrl.contacts.splice(index, 1, value);
         }
-        init();
-        debugger;
+        // init();
+        
         $ctrl.$onInit = () => {
-            debugger;
+            
             contactService.getAll()
                 .then(onGetSuccess)
                 .catch(onError)
         }
 
-            // function getAllContacts(contactService) {
-            //     debugger;
-            //     return contactService
-            //         .getAll()
-            //         .then(data => {
-            //             return data.items;
-            //         })
-            //         .catch(error => {
-            //             console.log(error);
-            //         });
-            // }
+        function onGetSuccess(response) {
+            $ctrl.contacts = response.items;
+            console.log(response.items)
+        }
+
+
+        function onError() {
+            console.log(`Error: ${data.errors}`)
+        }
+    
+        $ctrl.remove=(id)=> {
+            alert("Delete contact?");
+            contactService.remove(id)
+                .then(_onDeleteSuccess)
+                .catch(_onError)
+        }
+
+        function _onDeleteSuccess(data) {
+            let index = $ctrl.contacts.map(function(arrayItem) { return arrayItem._id; }).indexOf(data.item._id);
+            $ctrl.contacts.splice(index, 1)
+        }
+
+        function _onError(error) {
+            console.log(error)
+        }
+        
+        function update() {
+            console.log("The update function is firing");
+            contactService.update($ctrl.contactData)
+                .then(_onUpdateSuccess)
+                .catch(_onError)
+        }
+
+        function _onUpdateSuccess(data) {
+            console.log("update function is working");
+            $ctrl.contactData = null
+            if (data) {
+                $ctrl.contacts.push(data)
+            }
+        }
+        
         }
 })();
-//create an init function - (green project for samples)
-//call the contact service getAll from inside the oninit 
-//on success of the getAll, set the response data into vm property ($ctrl)

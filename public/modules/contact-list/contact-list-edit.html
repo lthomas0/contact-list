@@ -1,9 +1,12 @@
 <!doctype HTML>
+<div class="container">
 <div class="jumbotron text-center">
     <h1>contacts</h1>
 
     <p>{{ contactsCtrl.formMode }}</p>
 </div>
+
+
 <!-- BEGIN col-4 -->
 <div class="col-xs-12">
     <!-- BEGIN panel -->
@@ -18,7 +21,7 @@
             <form class="form-group" name="contactsCtrl.editForm" novalidate>
                 <div class="form-group" ng-class="{'has-error': (contactsCtrl.editForm.$submitted || contactsCtrl.editForm.name.$dirty) && contactsCtrl.editForm.name.$invalid}">
                     <label class="control-label valign-top" for="name">Full Name <span class="text-danger">*</span></label>
-                    <input type="text" ng-model="contactsCtrl.formData.local.name" for="name" class="form-control" id="name" name="name" placeholder="Enter Full Name"
+                    <input type="text" ng-model="contactsCtrl.formData.name" for="name" class="form-control" id="name" name="name" placeholder="Enter Full Name"
                         required ng-minlength="3" />
                     <span ng-show="(contactsCtrl.editForm.$submitted || contactsCtrl.editForm.name.$dirty) && contactsCtrl.editForm.name.$error.required"
                         class="help-block">Full Name is required</span>
@@ -27,7 +30,7 @@
                 </div>
                 <div class="form-group" ng-class="{'has-error': (contactsCtrl.editForm.$submitted || contactsCtrl.editForm.email.$dirty) && contactsCtrl.editForm.email.$invalid}">
                     <label class="control-label valign-top" for="email">Email <span class="text-danger">*</span></label>
-                    <input type="email " ng-model="contactsCtrl.formData.local.email" for="email" class="form-control" id="email" name="email" placeholder="Enter Email"
+                    <input type="email " ng-model="contactsCtrl.formData.email" for="email" class="form-control" id="email" name="email" placeholder="Enter Email"
                         required ng-minlength="3" />
                     <span ng-show="(contactsCtrl.editForm.$submitted || contactsCtrl.editForm.email.$dirty) && contactsCtrl.editForm.email.$error.required"
                         class="help-block">Valid Email is required</span>
@@ -43,27 +46,21 @@
                     <span ng-show="(contactsCtrl.editForm.$submitted || contactsCtrl.editForm.phone.$dirty) && contactsCtrl.editForm.email.$error.minlength"
                         class="help-block">Minimum is 3 characters</span>
                 </div>
-                <div class="form-group" ng-class="{'has-error': (contactsCtrl.editForm.$submitted || contactsCtrl.editForm.description.$dirty) && contactsCtrl.editForm.description.$invalid}">
-                    <label class="control-label valign-top" for="phone">Phone Number <span class="text-danger">*</span></label>
-                    <input type="number" ng-model="contactsCtrl.formData.phone" for="phone" class="form-control" id="description" name="description" placeholder="Enter Phone Number"
+                <div class="form-group" ng-class="{'has-error': (contactsCtrl.editForm.$submitted || contactsCtrl.editForm.affiliation.$dirty) && contactsCtrl.editForm.affiliation.$invalid}">
+                    <label class="control-label valign-top" for="phone">How Do You Know Them?<span class="text-danger">*</span></label>
+                    <input type="text" ng-model="contactsCtrl.formData.affiliation" for="phone" class="form-control" id="affiliation" name="affiliation" placeholder="How Do You Know Them?"
                         required ng-minlength="3" />
-                    <span ng-show="(contactsCtrl.editForm.$submitted || contactsCtrl.editForm.description.$dirty) && contactsCtrl.editForm.description.$error.required"
-                        class="help-block">Affiliation Description Required</span>
-                    <span ng-show="(contactsCtrl.editForm.$submitted || contactsCtrl.editForm.description.$dirty) && contactsCtrl.editForm.description.$error.minlength"
+                    <span ng-show="(contactsCtrl.editForm.$submitted || contactsCtrl.editForm.affiliation.$dirty) && contactsCtrl.editForm.affiliation.$error.required"
+                        class="help-block">Affiliation description Required</span>
+                    <span ng-show="(contactsCtrl.editForm.$submitted || contactsCtrl.editForm.affiliation.$dirty) && contactsCtrl.editForm.affiliation.$error.minlength"
                         class="help-block">Minimum is 3 characters</span>
                 </div>
-                </div>
-                <div class="form-group">
-                    <label>
-                    <input ng-model="contactsCtrl.formData.disabled" type="checkbox" ng-true-value="true" ng-false-value="false"> Disable contact
-                     </label>
-                    <!-- value='true' -->
-                </div>
-                <button type="button" ui-sref="^.list" class="btn btn-default">Cancel</button>
-                <button type="button" ng-click="contactsCtrl.submit()" class="btn btn-primary">{{ contactsCtrl.submitButton }}</button>
+            </div>
+                <button type="button" ui-sref="app.contact.list" class="btn btn-warning">Cancel</button>
+                <button type="button" ui-sref="app.contact.list" ng-click="contactsCtrl.submit()" class="btn btn-info">{{ contactsCtrl.submitButton }}</button>
             </form>
         </div>
     </div>
 </div>
-
+</div>
 </html>

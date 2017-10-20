@@ -1,5 +1,5 @@
 (function () {
-    angular.module('crudApp', ['ui.router']).config(RouteConfig);
+    angular.module('laura.home', ['ui.router']).config(RouteConfig);
     RouteConfig.$inject = ['$stateProvider'];
 
     function RouteConfig($stateProvider, $urlRouterProvider) {

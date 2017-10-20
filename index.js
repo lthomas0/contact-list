@@ -4,6 +4,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+
 const port = process.env.PORT || 8080;
 
 mongoose.Promise = global.Promise;
@@ -34,11 +35,13 @@ app.use(
  })
 );
 
-app.use(require('./app/routes/routes'));
+app.use(require('./app/routes/index.js'));
 
 
 app.listen(port, () => {
     console.log(`Magic is happening at ${port}`);
 });
+
+
 
 // module.exports = router;

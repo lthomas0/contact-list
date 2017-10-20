@@ -16,31 +16,31 @@
         }
 
         function getAll() {
-            return $http.get('/api/contacts')
+            return $http.get('/api/contact')
                 .then(xhrSuccess)
                 .catch(onError)
         }
 
         function getById(id, onSuccess, onError) {
-            return $http.get(`/api/contacts/${id}`)
+            return $http.get(`/api/contact/${id}`)
                 .then(xhrSuccess)
                 .catch(onError)
         }
 
         function insert(contactData, onSuccess, onError) {
-            return $http.post('/api/contacts', contactData)
+            return $http.post('/api/contact', contactData)
                 .then(xhrSuccess)
                 .catch(onError)
         }
 
         function update(contactData, onSuccess, onError) {
-            return $http.put(`/api/contacts/${contactData._id}`, contactData)
+            return $http.put(`/api/contact/${contactData._id}`, contactData)
                 .then(xhrSuccess)
                 .catch(onError)
         }
 
         function remove(id, onSuccess, onError) {
-            return $http.delete(`/api/contacts/${id}`)
+            return $http.delete(`/api/contact/${id}`)
                 .then(xhrSuccess)
                 .catch(onError)
         }

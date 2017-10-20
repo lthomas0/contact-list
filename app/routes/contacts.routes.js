@@ -1,9 +1,19 @@
 const router = require('express').Router();
 const path = require('path'); 
+const contactController = require('../controllers/contact.controller')()
+
+
 
 module.exports = router;
 
-router.post('/', function(request, response, next) {
+router.get('/', contactController.getAll)
+router.get('/:id', contactController.getOneById)
+router.post('/', contactController.insert)
+router.put('/:id', contactController.updateById)
+router.delete('/:id', contactController.removeById)
+
+
+router.post('/api/contacts', function(request, response, next) {
     console.log('hello world');
     response.status(200).json(request.body); 
 });
@@ -19,3 +29,5 @@ router.get('*', function(req, res){
     });
 }) //get call on path - send back next html file
 //sendFile - has second parameter 
+
+

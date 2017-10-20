@@ -21,7 +21,7 @@
                 }
             })
             .state("app.contact.edit", {
-                url: "/edit/:id",
+                url: "/edit?id",
                 views: {
                     "content@app": {
                         templateUrl: "/public/modules/contact-list/contact-list-edit.html",
@@ -30,6 +30,7 @@
                 }
 
             })
+
         function getAllContacts(contactService) {
             debugger;
             return contactService

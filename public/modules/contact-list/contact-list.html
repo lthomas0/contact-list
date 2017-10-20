@@ -1,20 +1,20 @@
+<!DOCTYPE HTML>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Press+Start+2P" rel="stylesheet">
+    
+</head>
+<body>
+<div class="container">
 <div class='col-xs-12'>
     <div class='row'>
-        <h2>contacts</h2>
+        <h2>Contact List</h2>
         <p>{{contactsCtrl.tagline}}</p>
     </div>
 </div>
 <div class="col-xs-12">
     <div class="row">
-        <button type="button" ui-sref='^.edit' class="btn btn-primary pull-right margin-bottom">Add New contacts</button>
+        <button id="addNew" type="button" ui-sref='^.edit' class="btn btn-info pull-right margin-bottom">Add New contacts</button>
         <ul class="nav nav-tabs" id="nav-tabs">
-            <!-- <li data-toggle="tab" ng-class="{active:contactsCtrl.tab===1}">
-                <a href ng-click="contactsCtrl.tab = 1"><span>Active</span></a>
-            </li>
-            <li data-toggle="tab" ng-class="{active:contactsCtrl.tab===2}">
-                <a href ng-click="contactsCtrl.tab = 2">Disabled contacts</a>
-            </li> -->
-        </ul>
         <!-- TABS -->
         <div class="tab-content tab-content-bordered dfade">
             <!-- TAB 1 -->
@@ -28,26 +28,29 @@
                     <!-- END panel-heading -->
                     <!-- BEGIN panel-body -->
                     <div class="panel-body">
-                        <p class="desc">contacts</p>
                         <div class="table-responsive">
                             <table class="table m-b-0 table-bordered bordered table-striped table-condensed">
                                 <thead>
                                     <tr>
-                                        <th>contact Full Name</th>
-                                        <th>contact Email</th>
-                                        <th>contact Phone</th>
-                                        <th>contact Affiliation Description</th>
-                                        <th class='action-buttons-tr'>Actions</th>
+                                        <th>Full Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Affiliation Description</th>
+                                        <th class='btn-col crud-table-buttons'>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="contact in contactsCtrl.contacts | filter:{disabled: false}">
-                                        <td>{{contact.local.name}}</td>
-                                        <td>{{contact.local.email}}</td>
-                                        <td>{{contact.local.phone}}</td>
-                                        <td>{{contact.local.description}}</td>
-                                        <td class="btn-col crud-table-buttons">
-                                            <view-edit-delete-buttons item="contact" service="contactsCtrl.service" list="contactsCtrl.contacts"></view-edit-delete-buttons>
+                                    <tr ng-repeat="contact in contactsCtrl.contacts">
+                                        <td>{{contact.name}}</td>
+                                        <td>{{contact.email}}</td>
+                                        <td>{{contact.phone}}</td>
+                                        <td>{{contact.affiliation}}</td>
+                                        <td class="btn-col crud-table-buttons">     
+                                                <!-- <button type="button" ui-sref="app.contact.edit({id:contact._id})" uib-popover="Edit" popover-trigger="'mouseenter'" href="" class="btn" data-toggle="panel-reload"><i class="ti-pencil"></i></a></button> -->
+                                                <button type="button" ui-sref="app.contact.edit({id:contact._id})" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
+                                                <button type="button" class="btn btn-info" ng-click="contactsCtrl.remove(contact._id)"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+                                                <!-- <button type="button" ng-click="contactsCtrl.remove(contact._id)" class="btn btn-danger"></button> -->
+                                            </a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -74,22 +77,24 @@
                                 <table class="table m-b-0 table-bordered bordered table-striped table-condensed">
                                     <thead>
                                         <tr>
-                                            <th>contact Full Name</th>
-                                            <th>contact Email</th>
-                                            <th>contact Phone</th>
-                                            <th>contact Affiliation Description</th>
+                                            <th>Full Name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Affiliation Description</th>
                                             <th class='action-buttons-tr'>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr ng-repeat="contact in contactsCtrl.contacts | filter:{disabled: true}">
-                                            <td>{{contact.local.name}}</td>
-                                            <td>{{contact.local.email}}</td>
-                                            <td>{{contact.local.phone}}</td>
-                                            <td>{{contact.local.description}}</td>
+                                        <tr ng-repeat="contact in contactsCtrl.contacts">
+                                            <td>{{contact.name}}</td>
+                                            <td>{{contact.email}}</td>
+                                            <td>{{contact.phone}}</td>
+                                            <td>{{contact.description}}</td>
                                             <td class="btn-col crud-table-buttons">
-                                                <view-edit-delete-buttons item="contact" service="contactsCtrl.service" list="contactsCtrl.contacts"></view-edit-delete-buttons>
-                                            </td>
+                                                    <!-- <button type="button" ui-sref="app.contact.edit({id:contact._id})" uib-popover="Edit" popover-trigger="'mouseenter'" href="" class="btn" data-toggle="panel-reload"><i class="ti-pencil"></i></a></button> -->
+                                                    <!-- <button type="button" ui-sref="app.contact.delete({id:contact.item._id})" uib-popover="Delete" popover-trigger="'mouseenter'" href="" class="btn" data-toggle="panel-reload"><i class="ti-close"></i></a> -->
+                                                    <button type="button" ng-click="contactsCtrl.remove(contact._id)" class="btn btn-danger"></button>
+                                                    </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -101,3 +106,6 @@
         </div>
     </div>
 </div>
+</div>
+</body>
+</html>
